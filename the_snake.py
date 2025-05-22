@@ -1,5 +1,5 @@
 import pygame
-import random
+from random import choice
 
 SCREEN_WIDTH = 640
 SCREEN_HEIGHT = 480
@@ -40,7 +40,7 @@ class Apple(GameObject):
             for y in range(GRID_HEIGHT)
         ]
         available = list(set(all_cells) - set(forbidden_positions))
-        self.position = random.choice(available) if available else (0, 0)
+        self.position = choice(available) if available else (0, 0)
 
     def draw(self, surface):
         pygame.draw.rect(
@@ -57,7 +57,7 @@ class Snake(GameObject):
         super().__init__(center, SNAKE_COLOR)
         self.length = 1
         self.positions = [center]
-        self.direction = random.choice([(1, 0), (-1, 0), (0, 1), (0, -1)])
+        self.direction = choice([(1, 0), (-1, 0), (0, 1), (0, -1)])
         self.next_direction = None
         self.last = None
 
@@ -99,7 +99,7 @@ class Snake(GameObject):
         center = (SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2)
         self.length = 1
         self.positions = [center]
-        self.direction = random.choice([(1, 0), (-1, 0), (0, 1), (0, -1)])
+        self.direction = choice([(1, 0), (-1, 0), (0, 1), (0, -1)])
         self.next_direction = None
         self.last = None
 
