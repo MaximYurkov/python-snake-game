@@ -12,6 +12,7 @@ APPLE_COLOR = (255, 0, 0)
 BOARD_BACKGROUND_COLOR = (0, 0, 0)
 FPS = 20
 
+
 class GameObject:
     """Базовый класс для игровых объектов."""
 
@@ -22,6 +23,7 @@ class GameObject:
     def draw(self, surface):
         """Заглушка для отрисовки (реализуется в наследниках)."""
         pass
+
 
 class Apple(GameObject):
     """Яблоко, которое ест змейка."""
@@ -46,8 +48,12 @@ class Apple(GameObject):
         pygame.draw.rect(
             surface,
             self.body_color,
-            pygame.Rect(self.position[0], self.position[1], GRID_SIZE, GRID_SIZE)
+            pygame.Rect(
+                self.position[0], self.position[1],
+                GRID_SIZE, GRID_SIZE
+            )
         )
+
 
 class Snake(GameObject):
     """Класс, представляющий змейку."""
@@ -123,6 +129,7 @@ class Snake(GameObject):
                     GRID_SIZE, GRID_SIZE
                 )
             )
+
 
 def handle_keys(snake):
     """Обрабатывает нажатия клавиш."""
