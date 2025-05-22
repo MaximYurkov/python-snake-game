@@ -8,14 +8,7 @@ from config import (
 from objects.game_object import GameObject
 
 class Snake(GameObject):
-    """
-    Класс, представляющий змейку.
-    """
-
     def __init__(self):
-        """
-        Инициализация змейки: начальная длина, положение и направление.
-        """
         center = (SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2)
         super().__init__(center, SNAKE_COLOR)
         self.length = 1
@@ -25,15 +18,9 @@ class Snake(GameObject):
         self.last = None
 
     def get_head_position(self):
-        """
-        Возвращает координаты головы змейки.
-        """
         return self.positions[0]
 
     def update_direction(self):
-        """
-        Обновляет текущее направление, если next_direction допустимо.
-        """
         if self.next_direction is None:
             return
 
@@ -45,11 +32,6 @@ class Snake(GameObject):
         self.next_direction = None
 
     def move(self):
-        """
-        Двигает змейку в текущем направлении.
-        Добавляет новую голову, убирает хвост.
-        Сбрасывает игру при столкновении с собой.
-        """
         cur = self.get_head_position()
         dx, dy = self.direction
         new = (
@@ -68,9 +50,6 @@ class Snake(GameObject):
             self.last = self.positions.pop()
 
     def reset(self):
-        """
-        Сброс змейки в начальное состояние.
-        """
         center = (SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2)
         self.length = 1
         self.positions = [center]
@@ -79,19 +58,22 @@ class Snake(GameObject):
         self.last = None
 
     def draw(self, surface):
-        """
-        Отрисовка всех сегментов змейки.
-        Также затирает последний сегмент, если он был удалён.
-        """
         if self.last:
             pygame.draw.rect(
                 surface,
                 BOARD_BACKGROUND_COLOR,
-                pygame.Rect(self.last[0], self.last[1], GRID_SIZE, GRID_SIZE)
+                pygame.Rect(
+                    self.last[0], self.last[1],
+                    GRID_SIZE, GRID_SIZE
+                )
             )
         for pos in self.positions:
             pygame.draw.rect(
                 surface,
                 self.body_color,
-                pygame.Rect(pos[0], pos[1], GRID_SIZE, GRID_SIZE)
+                pygame.Rect(
+                    pos[0], pos[1],
+                    GRID_SIZE, GRID_SIZE
+                )
             )
+

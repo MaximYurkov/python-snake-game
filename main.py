@@ -5,15 +5,14 @@ from objects.apple import Apple
 from objects.snake import Snake
 
 def handle_keys(snake):
-    """
-    Обработка нажатий клавиш для управления направлением змейки.
-    """
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             return False
 
         if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_UP:
+            if event.key == pygame.K_ESCAPE:
+                return False
+            elif event.key == pygame.K_UP:
                 snake.next_direction = (0, -1)
             elif event.key == pygame.K_DOWN:
                 snake.next_direction = (0, 1)
@@ -23,10 +22,8 @@ def handle_keys(snake):
                 snake.next_direction = (1, 0)
     return True
 
+
 def main():
-    """
-    Основной игровой цикл.
-    """
     pygame.init()
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
     pygame.display.set_caption("Змейка")
