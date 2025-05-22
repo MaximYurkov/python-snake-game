@@ -7,6 +7,7 @@ from config import (
 )
 from objects.game_object import GameObject
 
+
 class Snake(GameObject):
     def __init__(self):
         center = (SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2)
@@ -76,4 +77,3 @@ class Snake(GameObject):
                     GRID_SIZE, GRID_SIZE
                 )
             )
-

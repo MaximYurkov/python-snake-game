@@ -4,6 +4,7 @@ from config import SCREEN_WIDTH, SCREEN_HEIGHT, FPS
 from objects.apple import Apple
 from objects.snake import Snake
 
+
 def handle_keys(snake):
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -52,6 +53,7 @@ def main():
         pygame.display.update()
 
     pygame.quit()
+
 
 if __name__ == "__main__":
     main()
