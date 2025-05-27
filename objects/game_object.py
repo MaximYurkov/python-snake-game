@@ -3,10 +3,7 @@ from config import GRID_SIZE
 
 
 class GameObject:
-    """Базовый класс для всех игровых объектов."""
-
-    def __init__(self, position, body_color):
-        """Инициализирует координаты и цвет объекта."""
+    def __init__(self, position=(0, 0), body_color=(255, 255, 255)):
         self.position = position
         self.body_color = body_color
 

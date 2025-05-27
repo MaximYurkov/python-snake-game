@@ -1,6 +1,13 @@
 import pygame
 from random import choice
 
+# Константы направлений
+UP = (0, -1)
+DOWN = (0, 1)
+LEFT = (-1, 0)
+RIGHT = (1, 0)
+
+# Размеры и цвета
 SCREEN_WIDTH = 640
 SCREEN_HEIGHT = 480
 GRID_SIZE = 20
@@ -12,17 +19,14 @@ APPLE_COLOR = (255, 0, 0)
 BOARD_BACKGROUND_COLOR = (0, 0, 0)
 FPS = 20
 
+# Инициализация pygame и глобальные переменные
+pygame.init()
+screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+clock = pygame.time.Clock()
 
-class GameObject:
-    """Базовый класс для игровых объектов."""
 
-    def __init__(self, position, body_color):
-        self.position = position
-        self.body_color = body_color
 
-    def draw(self, surface):
-        """Заглушка для отрисовки (реализуется в наследниках)."""
-        pass
+from objects.game_object import GameObject
 
 
 class Apple(GameObject):
